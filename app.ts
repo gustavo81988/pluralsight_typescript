@@ -1,10 +1,10 @@
 function GetAllBooks(){
 
     let books = [
-        {title: 'Ulysses', author:'James Joyce', available: true},
-        {title: 'A Farewell to Arms', author:'Ernes Hemingway', available: false},
-        {title: 'I know why the caged bird sings', author:'Maya Angelou', available: true},
-        {title: 'Moby Dick', author:'Herman Melville', available: true},
+        {title: 'Ulysses', author:'James Joyce', available: true, category: Category.Fiction},
+        {title: 'A Farewell to Arms', author:'Ernes Hemingway', available: false, category: Category.Fiction},
+        {title: 'I know why the caged bird sings', author:'Maya Angelou', available: true, category: Category.Poetry},
+        {title: 'Moby Dick', author:'Herman Melville', available: true, category: Category.Fiction},
     ];
 
     return books;
@@ -27,5 +27,30 @@ function LogFirstAvailable(books: any) : void{
 
 }
 
-const allBooks = GetAllBooks();
-LogFirstAvailable(allBooks);
+enum Category {Biography, Poetry, Fiction, History, Children}
+
+
+function GetBookTitlesByCategory(categoryFilter: Category): Array<string>{
+    console.log("Getting books titles in category: "+ Category[categoryFilter]);
+    
+    const allBooks = GetAllBooks();
+    const filteredTitles: string[] = [];
+
+    for(let curretBook of allBooks){
+        if(curretBook.category == categoryFilter){
+            filteredTitles.push(curretBook.title)
+        }
+    }
+
+    return filteredTitles;
+}
+
+
+function LogBookTitles(titles: string[]): void{
+    for(let title of titles){
+        console.log(title);
+    }
+}
+
+const poetryBooks = GetBookTitlesByCategory(Category.Poetry);
+LogBookTitles(poetryBooks);
