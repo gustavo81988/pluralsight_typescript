@@ -1,9 +1,31 @@
-class HelloWorld{
-    constructor (public message: string){}
+function GetAllBooks(){
+
+    let books = [
+        {title: 'Ulysses', author:'James Joyce', available: true},
+        {title: 'A Farewell to Arms', author:'Ernes Hemingway', available: false},
+        {title: 'I know why the caged bird sings', author:'Maya Angelou', available: true},
+        {title: 'Moby Dick', author:'Herman Melville', available: true},
+    ];
+
+    return books;
 }
 
+function LogFirstAvailable(books: any) : void{
 
-var hello = new HelloWorld('Hello typescript!');
-console.log(hello.message);
+    let numberOfBooks: number = books.length;
+    let firstAvailable: string = '';
 
-console.log("Hello world");
+    for(let curretBook of books){
+        if(curretBook.available){
+            firstAvailable = curretBook.title;
+            break;
+        }
+    }
+
+    console.log('Total Books: '+numberOfBooks);
+    console.log('First Available: '+firstAvailable);
+
+}
+
+const allBooks = GetAllBooks();
+LogFirstAvailable(allBooks);
