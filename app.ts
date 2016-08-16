@@ -1,10 +1,10 @@
 function GetAllBooks(){
 
     let books = [
-        {title: 'Ulysses', author:'James Joyce', available: true, category: Category.Fiction},
-        {title: 'A Farewell to Arms', author:'Ernes Hemingway', available: false, category: Category.Fiction},
-        {title: 'I know why the caged bird sings', author:'Maya Angelou', available: true, category: Category.Poetry},
-        {title: 'Moby Dick', author:'Herman Melville', available: true, category: Category.Fiction},
+        {id:1, title: 'Ulysses', author:'James Joyce', available: true, category: Category.Fiction},
+        {id:2, title: 'A Farewell to Arms', author:'Ernes Hemingway', available: false, category: Category.Fiction},
+        {id:3, title: 'I know why the caged bird sings', author:'Maya Angelou', available: true, category: Category.Poetry},
+        {id:4, title: 'Moby Dick', author:'Herman Melville', available: true, category: Category.Fiction},
     ];
 
     return books;
@@ -52,5 +52,10 @@ function LogBookTitles(titles: string[]): void{
     }
 }
 
-const poetryBooks = GetBookTitlesByCategory(Category.Poetry);
-LogBookTitles(poetryBooks);
+function GetBookByID(id: number){
+    const allBooks = GetAllBooks();
+    return allBooks.filter(book => book.id === id)[0];
+}
+
+const fictionBooks = GetBookTitlesByCategory(Category.Fiction);
+fictionBooks.forEach( (val, idx, arr) => console.log(++idx + '-'+val) );
