@@ -29,6 +29,7 @@ var Category;
     Category[Category["Children"] = 4] = "Children";
 })(Category || (Category = {}));
 function GetBookTitlesByCategory(categoryFilter) {
+    if (categoryFilter === void 0) { categoryFilter = Category.Fiction; }
     console.log("Getting books titles in category: " + Category[categoryFilter]);
     var allBooks = GetAllBooks();
     var filteredTitles = [];
@@ -53,12 +54,51 @@ function GetBookByID(id) {
 function CreateCustomerID(name, id) {
     return name + id;
 }
-var x;
-x = 5;
-var IdGenerator;
-IdGenerator = function (name, id) { return id + name; };
-var myID = IdGenerator('Daniel', 20);
+function CreateCustomer(name, age, city) {
+    console.log('Creating cusomer ' + name);
+    if (age) {
+        console.log('Age: ' + age);
+    }
+    if (city) {
+        console.log('City: ' + city);
+    }
+}
+function CheckoutBooks(customer) {
+    var bookIDs = [];
+    for (var _i = 1; _i < arguments.length; _i++) {
+        bookIDs[_i - 1] = arguments[_i];
+    }
+    console.log('Checking out books for ' + customer);
+    var booksCheckedOut = [];
+    for (var _a = 0, bookIDs_1 = bookIDs; _a < bookIDs_1.length; _a++) {
+        var id = bookIDs_1[_a];
+        var book = GetBookByID(id);
+        if (book.available) {
+            booksCheckedOut.push(book.title);
+        }
+    }
+    return booksCheckedOut;
+}
+//******************************
+var myBooks = CheckoutBooks('Thorne', 1, 3, 4);
+myBooks.forEach(function (title) { return console.log(title); });
+//let fictionBooks = GetBookTitlesByCategory();
+//fictionBooks.forEach(title=> console.log(title));
+//CreateCustomer('Michelle');
+//CreateCustomer('Leigh', 6);
+//CreateCustomer('Marie', 12, 'Atlanta');
+/*
+let x: number;
+x= 5;
+
+let IdGenerator: (chars: string, nums: number) => string;
+IdGenerator = (name: string, id: number) => { return id + name };
+
+let myID: string = CreateCustomerID('Daniel',2);
 console.log(myID);
+
+
 //const fictionBooks = GetBookTitlesByCategory(Category.Fiction);
 //fictionBooks.forEach( (val, idx, arr) => console.log(++idx + '-'+val) );
+*/ 
 //# sourceMappingURL=app.js.map
