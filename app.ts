@@ -89,10 +89,41 @@ function CheckoutBooks(customer: string, ...bookIDs: number[]):string[]{
     return booksCheckedOut;
 }
 
+function GetTitles(author: string): string[];
+function GetTitles(available: boolean): string[];
+function GetTitles(bookProperty: any): string[]{
+    const allBooks = GetAllBooks();
+    const foundTitles: string[] = [];
+   
+    if(typeof bookProperty == 'string'){
+        //get all books by a particular author
+        for(let book of allBooks){
+            if(book.author === bookProperty){
+                foundTitles.push(book.title);
+            }
+        }
+    }
+    else if(typeof bookProperty == 'boolean'){
+        //get all books based on specified availability
+        for(let book of allBooks){
+            if(book.available === bookProperty){
+                foundTitles.push(book.title);
+            }
+        }
+    }
+
+    return foundTitles;
+}
+
+
+let hermansBook = GetTitles('Herman Melville');
+hermansBook.forEach(title=>console.log(title));
+
+
 //******************************
 
-let myBooks: string[] = CheckoutBooks('Thorne',1,3,4);
-myBooks.forEach( title => console.log(title));
+//let myBooks: string[] = CheckoutBooks('Thorne',1,3,4);
+//myBooks.forEach( title => console.log(titleu));
 
 //let fictionBooks = GetBookTitlesByCategory();
 //fictionBooks.forEach(title=> console.log(title));

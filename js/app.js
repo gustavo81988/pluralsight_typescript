@@ -79,9 +79,34 @@ function CheckoutBooks(customer) {
     }
     return booksCheckedOut;
 }
+function GetTitles(bookProperty) {
+    var allBooks = GetAllBooks();
+    var foundTitles = [];
+    if (typeof bookProperty == 'string') {
+        //get all books by a particular author
+        for (var _i = 0, allBooks_2 = allBooks; _i < allBooks_2.length; _i++) {
+            var book = allBooks_2[_i];
+            if (book.author === bookProperty) {
+                foundTitles.push(book.title);
+            }
+        }
+    }
+    else if (typeof bookProperty == 'boolean') {
+        //get all books based on specified availability
+        for (var _a = 0, allBooks_3 = allBooks; _a < allBooks_3.length; _a++) {
+            var book = allBooks_3[_a];
+            if (book.available === bookProperty) {
+                foundTitles.push(book.title);
+            }
+        }
+    }
+    return foundTitles;
+}
+var hermansBook = GetTitles('Herman Melville');
+hermansBook.forEach(function (title) { return console.log(title); });
 //******************************
-var myBooks = CheckoutBooks('Thorne', 1, 3, 4);
-myBooks.forEach(function (title) { return console.log(title); });
+//let myBooks: string[] = CheckoutBooks('Thorne',1,3,4);
+//myBooks.forEach( title => console.log(titleu));
 //let fictionBooks = GetBookTitlesByCategory();
 //fictionBooks.forEach(title=> console.log(title));
 //CreateCustomer('Michelle');
