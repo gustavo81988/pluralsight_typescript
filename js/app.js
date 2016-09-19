@@ -1,5 +1,6 @@
 "use strict";
 var enums_1 = require('./enums');
+var classes_1 = require('./classes');
 function GetAllBooks() {
     var books = [
         { id: 1, title: 'Ulysses', author: 'James Joyce', available: true, category: enums_1.Category.Fiction },
@@ -99,42 +100,7 @@ function GetTitles(bookProperty) {
 function PrintBook(book) {
     console.log(book.title + ' by ' + book.author);
 }
-var myBook = {
-    id: 1,
-    title: 'Pride and Prejudice',
-    author: 'Jane Austen',
-    available: true,
-    category: enums_1.Category.Fiction,
-    pages: 250,
-    markDamaged: function (reason) { return console.log('Damaged: ' + reason); }
-};
-//PrintBook(myBook);
-//myBook.markDamaged('missing back cover');
-var logDamage;
-logDamage = function (damage) { return console.log('Damaged reported: ' + damage); };
-logDamage('coffee stains');
-//******************************
-//let hermansBook = GetTitles('Herman Melville');
-//hermansBook.forEach(title=>console.log(title));
-//let myBooks: string[] = CheckoutBooks('Thorne',1,3,4);
-//myBooks.forEach( title => console.log(titleu));
-//let fictionBooks = GetBookTitlesByCategory();
-//fictionBooks.forEach(title=> console.log(title));
-//CreateCustomer('Michelle');
-//CreateCustomer('Leigh', 6);
-//CreateCustomer('Marie', 12, 'Atlanta');
-/*
-let x: number;
-x= 5;
-
-let IdGenerator: (chars: string, nums: number) => string;
-IdGenerator = (name: string, id: number) => { return id + name };
-
-let myID: string = CreateCustomerID('Daniel',2);
-console.log(myID);
-
-
-//const fictionBooks = GetBookTitlesByCategory(Category.Fiction);
-//fictionBooks.forEach( (val, idx, arr) => console.log(++idx + '-'+val) );
-*/ 
+var favoriteLibrarian = new classes_1.UniversityLibrarian();
+favoriteLibrarian.name = 'Maria';
+favoriteLibrarian.assistCustomer('Lynda');
 //# sourceMappingURL=app.js.map

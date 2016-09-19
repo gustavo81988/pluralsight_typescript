@@ -1,5 +1,6 @@
 import { Category } from './enums';
-import { Book, DamageLogger } from './interfaces';
+import { Book, DamageLogger, Author, Librarian } from './interfaces';
+import { UniversityLibrarian } from './classes';
 
 function GetAllBooks(): Book[]{
 
@@ -119,51 +120,6 @@ function PrintBook(book: Book): void{
     console.log(book.title + ' by ' + book.author);
 }
 
-let myBook: Book = {
-    id:1,
-    title: 'Pride and Prejudice', 
-    author:'Jane Austen', 
-    available: true, 
-    category: Category.Fiction,
-    pages: 250,
-    markDamaged: (reason: string) => console.log('Damaged: ' + reason)
-}
-
-//PrintBook(myBook);
-//myBook.markDamaged('missing back cover');
-
-
-let logDamage: DamageLogger;
-logDamage = (damage: string) => console.log('Damaged reported: ' + damage);
-logDamage('coffee stains');
-
-
-//******************************
-
-//let hermansBook = GetTitles('Herman Melville');
-//hermansBook.forEach(title=>console.log(title));
-
-//let myBooks: string[] = CheckoutBooks('Thorne',1,3,4);
-//myBooks.forEach( title => console.log(titleu));
-
-//let fictionBooks = GetBookTitlesByCategory();
-//fictionBooks.forEach(title=> console.log(title));
-
-//CreateCustomer('Michelle');
-//CreateCustomer('Leigh', 6);
-//CreateCustomer('Marie', 12, 'Atlanta');
-
-/*
-let x: number;
-x= 5;
-
-let IdGenerator: (chars: string, nums: number) => string;
-IdGenerator = (name: string, id: number) => { return id + name };
-
-let myID: string = CreateCustomerID('Daniel',2);
-console.log(myID);
-
-
-//const fictionBooks = GetBookTitlesByCategory(Category.Fiction);
-//fictionBooks.forEach( (val, idx, arr) => console.log(++idx + '-'+val) );
-*/
+let favoriteLibrarian: Librarian = new UniversityLibrarian();
+favoriteLibrarian.name = 'Maria';
+favoriteLibrarian.assistCustomer('Lynda');
