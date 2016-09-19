@@ -108,8 +108,11 @@ var myBook = {
     pages: 250,
     markDamaged: function (reason) { return console.log('Damaged: ' + reason); }
 };
-PrintBook(myBook);
-myBook.markDamaged('missing back cover');
+//PrintBook(myBook);
+//myBook.markDamaged('missing back cover');
+var logDamage;
+logDamage = function (damage) { return console.log('Damaged reported: ' + damage); };
+logDamage('coffee stains');
 //******************************
 //let hermansBook = GetTitles('Herman Melville');
 //hermansBook.forEach(title=>console.log(title));
