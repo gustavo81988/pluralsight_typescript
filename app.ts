@@ -1,6 +1,6 @@
 import { Category } from './enums';
 import { Book, DamageLogger, Author, Librarian } from './interfaces';
-import { UniversityLibrarian } from './classes';
+import { UniversityLibrarian, ReferenceItem } from './classes';
 
 function GetAllBooks(): Book[]{
 
@@ -116,10 +116,13 @@ function GetTitles(bookProperty: any): string[]{
     return foundTitles;
 }
 
-function PrintBook(book: Book): void{
+function PrintBook(book: Book): void {
     console.log(book.title + ' by ' + book.author);
 }
 
-let favoriteLibrarian: Librarian = new UniversityLibrarian();
-favoriteLibrarian.name = 'Maria';
-favoriteLibrarian.assistCustomer('Lynda');
+let ref: ReferenceItem = new ReferenceItem('Updated Facts and Figures',2012);
+
+ref.printItem();
+
+ref.publisher = 'Random Data Publishing';
+console.log(ref.publisher);

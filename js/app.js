@@ -100,7 +100,8 @@ function GetTitles(bookProperty) {
 function PrintBook(book) {
     console.log(book.title + ' by ' + book.author);
 }
-var favoriteLibrarian = new classes_1.UniversityLibrarian();
-favoriteLibrarian.name = 'Maria';
-favoriteLibrarian.assistCustomer('Lynda');
+var ref = new classes_1.ReferenceItem('Updated Facts and Figures', 2012);
+ref.printItem();
+ref.publisher = 'Random Data Publishing';
+console.log(ref.publisher);
 //# sourceMappingURL=app.js.map
